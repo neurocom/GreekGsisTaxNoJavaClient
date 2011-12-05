@@ -1,0 +1,3 @@
+This is a java client for the web service returning information about greek businesses using their tax id.
+
+Check the unit test src/gr/gsis/rgwsbasstoixn/TestRgWsBASStoixClient.java for example usage.
