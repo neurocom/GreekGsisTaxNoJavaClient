@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns0="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl/types/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl" name="RgWsBasStoixN" targetNamespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl/types/" targetNamespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl/types/" elementFormDefault="qualified">
+            <complexType name="RgWsBasStoixNRtUser">
+                <complexContent>
+                    <extension base="tns:RgWsBasStoixNRtBase">
+                        <sequence>
+                            <element name="actLongDescr" type="string" nillable="true"/>
+                            <element name="postalZipCode" type="string" nillable="true"/>
+                            <element name="facActivity" type="decimal" nillable="true"/>
+                            <element name="registDate" type="dateTime" nillable="true"/>
+                            <element name="stopDate" type="dateTime" nillable="true"/>
+                            <element name="doyDescr" type="string" nillable="true"/>
+                            <element name="parDescription" type="string" nillable="true"/>
+                            <element name="deactivationFlag" type="string" nillable="true"/>
+                            <element name="postalAddressNo" type="string" nillable="true"/>
+                            <element name="postalAddress" type="string" nillable="true"/>
+                            <element name="doy" type="string" nillable="true"/>
+                            <element name="firmPhone" type="string" nillable="true"/>
+                            <element name="onomasia" type="string" nillable="true"/>
+                            <element name="firmFax" type="string" nillable="true"/>
+                            <element name="afm" type="string" nillable="true"/>
+                            <element name="commerTitle" type="string" nillable="true"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="RgWsBasStoixNRtBase">
+                <sequence/>
+            </complexType>
+            <complexType name="GenWsErrorRtUser">
+                <complexContent>
+                    <extension base="tns:GenWsErrorRtBase">
+                        <sequence>
+                            <element name="errorDescr" type="string" nillable="true"/>
+                            <element name="errorCode" type="string" nillable="true"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="GenWsErrorRtBase">
+                <sequence/>
+            </complexType>
+        </schema>
+    </types>
+    <message name="RgWsBasStoixN_rgWsBasStoixN">
+        <part name="pAfm" type="xsd:string"/>
+        <part name="pBasStoixNRec_out" type="tns0:RgWsBasStoixNRtUser"/>
+        <part name="pCallSeqId_out" type="xsd:decimal"/>
+        <part name="pErrorRec_out" type="tns0:GenWsErrorRtUser"/>
+    </message>
+    <message name="RgWsBasStoixN_rgWsBasStoixNResponse">
+        <part name="pBasStoixNRec_out" type="tns0:RgWsBasStoixNRtUser"/>
+        <part name="pCallSeqId_out" type="xsd:decimal"/>
+        <part name="pErrorRec_out" type="tns0:GenWsErrorRtUser"/>
+    </message>
+    <message name="RgWsBasStoixN_rgWsBasStoixNVersionInfo"/>
+    <message name="RgWsBasStoixN_rgWsBasStoixNVersionInfoResponse">
+        <part name="result" type="xsd:string"/>
+    </message>
+    <portType name="RgWsBasStoixN">
+        <operation name="rgWsBasStoixN" parameterOrder="pAfm pBasStoixNRec_out pCallSeqId_out pErrorRec_out">
+            <input message="tns:RgWsBasStoixN_rgWsBasStoixN"/>
+            <output message="tns:RgWsBasStoixN_rgWsBasStoixNResponse"/>
+        </operation>
+        <operation name="rgWsBasStoixNVersionInfo">
+            <input message="tns:RgWsBasStoixN_rgWsBasStoixNVersionInfo"/>
+            <output message="tns:RgWsBasStoixN_rgWsBasStoixNVersionInfoResponse"/>
+        </operation>
+    </portType>
+    <binding name="RgWsBasStoixNSoapHttp" type="tns:RgWsBasStoixN">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="rgWsBasStoixN">
+            <soap:operation soapAction="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl/rgWsBasStoixN"/>
+            <input>
+                <soap:body use="literal" namespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl" parts="pAfm pBasStoixNRec_out pCallSeqId_out pErrorRec_out"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl" parts="pBasStoixNRec_out pCallSeqId_out pErrorRec_out"/>
+            </output>
+        </operation>
+        <operation name="rgWsBasStoixNVersionInfo">
+            <soap:operation soapAction="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl/rgWsBasStoixNVersionInfo"/>
+            <input>
+                <soap:body use="literal" namespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://gr/gsis/rgwsbasstoixn/RgWsBasStoixN.wsdl" parts="result"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="RgWsBasStoixN">
+        <port name="RgWsBasStoixNSoapHttpPort" binding="tns:RgWsBasStoixNSoapHttp">
+            <soap:address location="https://www1.gsis.gr/wsgsis/RgWsBasStoixN/RgWsBasStoixNSoapHttpPort"/>
+        </port>
+    </service>
+</definitions>

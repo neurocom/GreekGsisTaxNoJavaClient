@@ -1,0 +1,14 @@
+<project default="wsimport">
+
+  <target name="wsimport">
+        
+    <exec executable="C:\Program Files\Java\jdk1.6.0_22\bin\wsimport">
+            
+      <arg line="-keep -s ./src -p com.neurocom.pasport.cms
+          -d ./bin http://localhost:8080/cmsgateway/cmsGateway?wsdl"/>
+            
+    </exec>
+        
+  </target>
+
+</project>
